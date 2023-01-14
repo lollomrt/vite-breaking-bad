@@ -1,12 +1,32 @@
 <script>
 import AppHeader from './components/AppHeader.vue'
 import AppMain from './components/AppMain.vue'
+import axios from 'axios'
+import { store } from './store.js'
 
 export default {
+  data() {
+    return {
+      store
+    }
+  },
+  created() {
+    this.getCardsList()
+  },
+  methods: {
+    getCardsList() {
+      axios.get(store.url).then((response) => {
+        console.log(response.data.data)
+        store.cardsList = response.data.data
+      })
+    }
+
+  },
   components: {
     AppHeader,
     AppMain
   }
+
 }
 </script>
   
@@ -15,9 +35,8 @@ export default {
     <AppHeader></AppHeader>
     <AppMain></AppMain>
   </div>
-  
 </template>
 
 <style lang="scss">
-@use './styles/generals.scss'
+@use './styles/generals.scss' as *;
 </style>
