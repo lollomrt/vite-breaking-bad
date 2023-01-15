@@ -1,6 +1,7 @@
 <script>
 import AppHeader from './components/AppHeader.vue'
 import AppMain from './components/AppMain.vue'
+import AppLoader from './components/AppLoader.vue'
 import axios from 'axios'
 import { store } from './store.js'
 
@@ -19,20 +20,25 @@ export default {
       axios.get(store.url).then((response) => {
         console.log(response.data.data)
         store.cardsList = response.data.data
+        store.loading = false
       })
     }
 
   },
   components: {
     AppHeader,
-    AppMain
+    AppMain,
+    AppLoader
   }
 
 }
 </script>
   
 <template lang="">
-  <div>
+  <div v-if="store.loading">
+    <AppLoader></AppLoader>
+  </div>
+  <div v-else>
     <AppHeader></AppHeader>
     <AppMain></AppMain>
   </div>
