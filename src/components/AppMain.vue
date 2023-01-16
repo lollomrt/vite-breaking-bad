@@ -1,5 +1,6 @@
 <script>
 import CardsContainer from './CardsContainer.vue'
+import AppSelect from './AppSelect.vue'
 import { store } from '../store.js'
 
 export default {
@@ -9,7 +10,8 @@ export default {
     }
   },
   components: {
-    CardsContainer
+    CardsContainer,
+    AppSelect
   }
 }
 </script>
@@ -17,11 +19,7 @@ export default {
 <template lang="">
   <main>
     <div class="container">
-      <div class="container-select">
-        <select name="alien" id="">
-          <option value="alien">alien</option>
-        </select>
-      </div>
+      <AppSelect></AppSelect>
       <CardsContainer></CardsContainer>
     </div>   
   </main> 
@@ -34,17 +32,5 @@ export default {
   flex-direction: column;
   align-items: center;
   background-color: #d48f38;
-
-  .container-select {
-    width: 1200px;
-    padding: 1rem 0;
-
-    select {
-      border: none;
-      padding: 1rem;
-      width: 100px;
-      font-size: 1rem;
-    }
-  }
 }
 </style>
