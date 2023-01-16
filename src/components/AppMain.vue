@@ -2,6 +2,7 @@
 import CardsContainer from './CardsContainer.vue'
 import AppSelect from './AppSelect.vue'
 import { store } from '../store.js'
+import axios from 'axios'
 
 export default {
   data() {
@@ -12,6 +13,15 @@ export default {
   components: {
     CardsContainer,
     AppSelect
+  },
+  methods: {
+    selectArch(archetipo) {
+      let apiUrl = store.urlCompleto + 'archetype=' + archetipo
+      axios.get(apiUrl).then((response) => {
+        store.cardsList = response.data.data
+      })
+      console.log('ciao!')
+    }
   }
 }
 </script>
@@ -19,7 +29,7 @@ export default {
 <template lang="">
   <main>
     <div class="container">
-      <AppSelect :option="store.archetypeList"></AppSelect>
+      <AppSelect @selectArchName="selectArch" :option="store.archetypeList"></AppSelect>
       <CardsContainer></CardsContainer>
     </div>   
   </main> 
