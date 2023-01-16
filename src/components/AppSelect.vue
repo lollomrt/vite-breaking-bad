@@ -1,17 +1,17 @@
 <script>
-export default {
 
+
+export default {
+    props: {
+        option: Object
+    }
 }
 </script>
 
 <template lang="">
     <div class="container-select">
         <select class="select-style" name="alien" id="">
-            <option value="alien">alien</option>
-            <option value="alien">alien</option>
-            <option value="alien">alien</option>
-            <option value="alien">alien</option>
-            <option value="alien">alien</option>
+            <option v-for="(element,index) in option" :value="element.archetype_name">{{ element.archetype_name }}</option>
         </select>
     </div>
 </template>

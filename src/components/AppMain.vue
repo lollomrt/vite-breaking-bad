@@ -19,7 +19,7 @@ export default {
 <template lang="">
   <main>
     <div class="container">
-      <AppSelect></AppSelect>
+      <AppSelect :option="store.archetypeList"></AppSelect>
       <CardsContainer></CardsContainer>
     </div>   
   </main> 

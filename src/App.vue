@@ -22,7 +22,12 @@ export default {
         store.cardsList = response.data.data
         store.loading = false
       })
-    }
+
+      axios.get(store.urlSecond).then((response) => {
+        store.archetypeList = response.data
+      })
+    },
+
 
   },
   components: {
